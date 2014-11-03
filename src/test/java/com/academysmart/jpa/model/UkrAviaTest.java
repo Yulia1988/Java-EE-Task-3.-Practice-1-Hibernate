@@ -39,14 +39,13 @@ public class UkrAviaTest {
 		assertEquals(4, ticket.getId());
 
 	}
-
 	@Test
-	public void showFindPassenger() throws Exception {
-		Passenger passenger = em.find(Passenger.class, 1L);
-		assertEquals("IRYNA", passenger.getName());
-
+	public void showFindAirport() throws Exception {
+		Airport airport = em.find(Airport.class, 11L);
+		assertEquals("BORISPOL", airport.getAirportName());
 	}
 
+	@Test
 	public void shouldCreatePassenger() {
 		Passenger passenger = new Passenger();
 		passenger.setPassId(10);
@@ -57,8 +56,7 @@ public class UkrAviaTest {
 		tx.begin();
 		em.persist(passenger);
 		tx.commit();
-		em.close();
 
 	}
-
+	
 }
