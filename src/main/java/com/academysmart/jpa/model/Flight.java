@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -19,7 +21,11 @@ public class Flight {
 	private int seatNumber;
 	@OneToMany(mappedBy = "flight")
 	private List<Ticket> tickets;
-
+	
+	@ManyToOne
+	@JoinColumn(name = "AIRPORT_ID")
+	private Airport airport;
+	
 	public String getDeparture() {
 		return departure;
 	}

@@ -1,9 +1,24 @@
 package com.academysmart.jpa.model;
 
-public class Airport {
-	private String airportName;
-	private String airportType;
+import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+@Entity
+public class Airport {
+	
+	@Id
+	private long airport_Id;
+	private String airportName;
+	
+	@OneToMany(mappedBy = "airport")
+	private List<Flight> flights;
+	
+	
+	
+	
 	public String getAirportName() {
 		return airportName;
 	}
@@ -12,12 +27,12 @@ public class Airport {
 		this.airportName = airportName;
 	}
 
-	public String getAirportType() {
-		return airportType;
+	public long getId() {
+		return airport_Id;
 	}
 
-	public void setAirportType(String airportType) {
-		this.airportType = airportType;
+	public void setId(long airport_Id) {
+		this.airport_Id = airport_Id;
 	}
 
 }
