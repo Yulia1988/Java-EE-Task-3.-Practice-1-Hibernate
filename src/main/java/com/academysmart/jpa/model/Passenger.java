@@ -1,11 +1,20 @@
 package com.academysmart.jpa.model;
 
+
+
+
 import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
 @Entity
+@NamedQuery(name = "selectAll", query = "SELECT p FROM Passenger p")
 public class Passenger {
 	@Id
 	private long pass_Id;
@@ -15,6 +24,7 @@ public class Passenger {
 	private String patronymic;
 	private String phone;
 	@OneToMany(mappedBy = "passenger")
+	@Cascade(value={CascadeType.ALL})
 	private List<Ticket> tickets;
 
 	public long getPassId() {

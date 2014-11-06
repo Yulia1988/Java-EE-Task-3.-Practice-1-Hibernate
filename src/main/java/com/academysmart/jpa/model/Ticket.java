@@ -13,11 +13,11 @@ public class Ticket {
 	private int ticket_Price;
 
 	@ManyToOne
-	@JoinColumn(name = "FLIGHT_ID")
+	@JoinColumn(name = "FLIGHT_ID", referencedColumnName = "FLIGHT_ID")
 	private Flight flight;
 
 	@ManyToOne
-	@JoinColumn(name = "PASS_ID")
+	@JoinColumn(name = "PASS_ID", referencedColumnName = "PASS_ID")
 	private Passenger passenger;
 
 	public int getTicket_Price() {
@@ -37,6 +37,22 @@ public class Ticket {
 	}
 
 	public Ticket() {
+	}
+
+	public Flight getFlight() {
+		return flight;
+	}
+
+	public void setFlight(Flight flight) {
+		this.flight = flight;
+	}
+
+	public Passenger getPassenger() {
+		return passenger;
+	}
+
+	public void setPassenger(Passenger passenger) {
+		this.passenger = passenger;
 	}
 
 }

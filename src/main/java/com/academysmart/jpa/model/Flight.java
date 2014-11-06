@@ -23,7 +23,7 @@ public class Flight {
 	private List<Ticket> tickets;
 	
 	@ManyToOne
-	@JoinColumn(name = "AIRPORT_ID")
+	@JoinColumn(name = "AIRPORT_ID", referencedColumnName = "AIRPORT_ID")
 	private Airport airport;
 	
 	public String getDeparture() {
@@ -84,5 +84,13 @@ public class Flight {
 
 	public Flight() {
 
+	}
+
+	public Airport getAirport() {
+		return airport;
+	}
+
+	public void setAirport(Airport airport) {
+		this.airport = airport;
 	}
 }

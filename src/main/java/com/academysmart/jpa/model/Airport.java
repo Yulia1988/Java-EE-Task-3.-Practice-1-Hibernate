@@ -15,9 +15,7 @@ public class Airport {
 	
 	@OneToMany(mappedBy = "airport")
 	private List<Flight> flights;
-	
-	
-	
+
 	
 	public String getAirportName() {
 		return airportName;
@@ -34,5 +32,6 @@ public class Airport {
 	public void setId(long airport_Id) {
 		this.airport_Id = airport_Id;
 	}
+
 
 }

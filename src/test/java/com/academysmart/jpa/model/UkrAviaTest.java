@@ -39,10 +39,18 @@ public class UkrAviaTest {
 		assertEquals(4, ticket.getId());
 
 	}
+
 	@Test
 	public void showFindAirport() throws Exception {
 		Airport airport = em.find(Airport.class, 11L);
 		assertEquals("BORISPOL", airport.getAirportName());
+	}
+
+	@Test
+	public void showFlightTitle() {
+		Ticket ticket = em.find(Ticket.class, 5L);
+		System.out.println(ticket.getFlight().getFlightTitle());
+		assertEquals(5, ticket.getId());
 	}
 
 	@Test
@@ -56,7 +64,22 @@ public class UkrAviaTest {
 		tx.begin();
 		em.persist(passenger);
 		tx.commit();
+		passenger = em.find(Passenger.class, 10L);
+		System.out.println(passenger.getName());
+		assertEquals("OLEG", passenger.getName());
 
 	}
-	
+
+	@Test
+	public void shouldRemovePassenger() {
+		Passenger passenger = em.find(Passenger.class, 2L);
+		tx.begin();
+		em.remove(passenger);
+		tx.commit();
+		@SuppressWarnings("unchecked")
+		List<Passenger> passengers = em.createNamedQuery("selectAll")
+				.getResultList();
+		assertEquals(2, passengers.size());
+	}
+
 }
